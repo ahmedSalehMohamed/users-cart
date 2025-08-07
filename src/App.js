@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, deleteUser } from "./redux/addListAction";
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+import 'primeflex/primeflex.css';
+
+import "./App.css";
+
+import { InputText } from "primereact/inputtext";
+
+import { Button } from "primereact/button";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,37 +35,44 @@ function App() {
 
   return (
     <div
-      className="App"
+      className="App m-5"
       style={{ backgroundColor: changeTheme ? "#222" : "#fff" }}
     >
       <h1>User List</h1>
-      <input
+
+      <InputText
         placeholder="name"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        className="mr-2"
       />
-      <input
+      <InputText
         placeholder="role"
         value={role}
         onChange={(e) => setRole(e.target.value)}
+        className="mr-2"
       />
-      <button onClick={() => handleChangeADD()}>Add User</button>
+      <Button
+        label="Add User"
+        onClick={() => handleChangeADD()}
+        severity="secondary"
+      />
       {users.length === 0 ? (
         <p>No user Found </p>
       ) : (
         <ul>
           {users.map((user) => (
-            <li key={user.id}>
+            <li key={user.id} className="mb-2">
               {user.id}-{user.name} {user.role}
-              <button onClick={() => handleChangeDelete(user.id)}>
+              <Button onClick={() => handleChangeDelete(user.id)} size="small" className="ml-2" severity="danger">
                 Delete User
-              </button>
+              </Button>
             </li>
           ))}
         </ul>
       )}
       <p>Quantity:{users.length}</p>
-      <button onClick={() => ChangeTheme()}>switch mode</button>
+      <Button onClick={() => ChangeTheme()}>switch mode</Button>
     </div>
   );
 }
