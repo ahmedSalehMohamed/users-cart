@@ -1,10 +1,10 @@
-import { createStore } from "redux";
-import { userReducer } from "./addListReducer";
+import { configureStore } from "@reduxjs/toolkit";
+import usersReducer from "./usersSlice";
 
-// Enable Redux DevTools if available
-const store = createStore(
-  userReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const store = configureStore({
+  reducer: usersReducer, 
+  devTools: true,
+});
 
 export default store;
+

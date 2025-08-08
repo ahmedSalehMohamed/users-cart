@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, deleteUser } from "./redux/addListAction";
+import { addUser, deleteUser } from "./redux/usersSlice";
+
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import 'primeflex/primeflex.css';
-
 import "./App.css";
 
 import { InputText } from "primereact/inputtext";
@@ -77,4 +77,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 
